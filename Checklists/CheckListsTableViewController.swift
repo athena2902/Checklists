@@ -46,11 +46,7 @@ class CheckListsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +78,13 @@ class CheckListsTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row)
+        
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
     func configureCheckamrk(for cell: UITableViewCell, with item: CheckListItem) {
         if item.checked {
             cell.accessoryType = .checkmark
@@ -95,5 +98,16 @@ class CheckListsTableViewController: UITableViewController {
         label.text = item.text
     }
     
-    
+    @IBAction func addItem() {
+        let newItemIndex = items.count
+        
+        let newItem = CheckListItem()
+        newItem.text = "New record"
+        newItem.checked = false
+        items.append(newItem)
+        
+        let indexPath = IndexPath(row: newItemIndex, section: 0)
+        let indexPahts = [indexPath]
+        tableView.insertRows(at: indexPahts, with: .automatic)
+    }
 }
