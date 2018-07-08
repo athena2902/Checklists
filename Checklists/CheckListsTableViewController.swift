@@ -46,7 +46,7 @@ class CheckListsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func didReceiveMemoryWarning() {
