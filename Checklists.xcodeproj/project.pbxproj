@@ -11,7 +11,7 @@
 		EE55922020C58E460001D046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55921E20C58E460001D046 /* Main.storyboard */; };
 		EE55922220C58E4A0001D046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE55922120C58E4A0001D046 /* Assets.xcassets */; };
 		EE55922520C58E4A0001D046 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55922320C58E4A0001D046 /* LaunchScreen.storyboard */; };
-		EE60CCBC20F24B87009C501E /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE60CCBB20F24B87009C501E /* AddItemViewController.swift */; };
+		EE60CCBC20F24B87009C501E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE60CCBB20F24B87009C501E /* ItemDetailViewController.swift */; };
 		EE6F56EA20CC2B6500C86461 /* CheckListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6F56E920CC2B6500C86461 /* CheckListItem.swift */; };
 		EEE8479220C6DE9C0005C4E1 /* CheckListsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE8479120C6DE9C0005C4E1 /* CheckListsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -23,7 +23,7 @@
 		EE55922120C58E4A0001D046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE55922420C58E4A0001D046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE55922620C58E4A0001D046 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE60CCBB20F24B87009C501E /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		EE60CCBB20F24B87009C501E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		EE6F56E920CC2B6500C86461 /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListItem.swift; sourceTree = "<group>"; };
 		EEE8479120C6DE9C0005C4E1 /* CheckListsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +60,7 @@
 			children = (
 				EE55921A20C58E460001D046 /* AppDelegate.swift */,
 				EEE8479120C6DE9C0005C4E1 /* CheckListsTableViewController.swift */,
-				EE60CCBB20F24B87009C501E /* AddItemViewController.swift */,
+				EE60CCBB20F24B87009C501E /* ItemDetailViewController.swift */,
 				EE55921E20C58E460001D046 /* Main.storyboard */,
 				EE55922120C58E4A0001D046 /* Assets.xcassets */,
 				EE55922320C58E4A0001D046 /* LaunchScreen.storyboard */,
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE6F56EA20CC2B6500C86461 /* CheckListItem.swift in Sources */,
-				EE60CCBC20F24B87009C501E /* AddItemViewController.swift in Sources */,
+				EE60CCBC20F24B87009C501E /* ItemDetailViewController.swift in Sources */,
 				EEE8479220C6DE9C0005C4E1 /* CheckListsTableViewController.swift in Sources */,
 				EE55921B20C58E460001D046 /* AppDelegate.swift in Sources */,
 			);

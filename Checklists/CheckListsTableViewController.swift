@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckListsTableViewController: UITableViewController, AddItemViewControllerDelegate {
+class CheckListsTableViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
     var items: [CheckListItem]
     
@@ -22,12 +22,12 @@ class CheckListsTableViewController: UITableViewController, AddItemViewControlle
         
         let row1item = CheckListItem()
         row1item.text = "Learn iOS development"
-        row1item.checked = false
+        row1item.checked = true
         items.append(row1item)
         
         let row2item = CheckListItem()
         row2item.text = "Brush teeth"
-        row2item.checked = false
+        row2item.checked = true
         items.append(row2item)
         
         let row3item = CheckListItem()
@@ -37,7 +37,7 @@ class CheckListsTableViewController: UITableViewController, AddItemViewControlle
         
         let row4item = CheckListItem()
         row4item.text = "Eat ice cream"
-        row4item.checked = false
+        row4item.checked = true
         items.append(row4item)
         
         super.init(coder: aDecoder)
@@ -86,10 +86,11 @@ class CheckListsTableViewController: UITableViewController, AddItemViewControlle
     }
     
     func configureCheckamrk(for cell: UITableViewCell, with item: CheckListItem) {
+        let label = cell.viewWithTag(1001) as! UILabel
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            label.text = ""
         }
     }
     
@@ -98,11 +99,11 @@ class CheckListsTableViewController: UITableViewController, AddItemViewControlle
         label.text = item.text
     }
     
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: AddItemViewController, didFinishingAdding item: CheckListItem) {
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishingAdding item: CheckListItem) {
         let newRowIndex = items.count
         items.append(item)
         let indexPath = IndexPath(row: newRowIndex, section: 0)
@@ -112,11 +113,28 @@ class CheckListsTableViewController: UITableViewController, AddItemViewControlle
         navigationController?.popViewController(animated: true)
     }
     
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishingEditing item: CheckListItem) {
+        if let index = items.index(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
-            let controller = segue.destination as! AddItemViewController
+            let controller = segue.destination as! ItemDetailViewController
             
             controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let controller = segue.destination as! ItemDetailViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
 }
