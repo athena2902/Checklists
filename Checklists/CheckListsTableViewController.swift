@@ -10,48 +10,53 @@ import UIKit
 
 class CheckListsTableViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
-    var items: [CheckListItem]
-    
-    required init?(coder aDecoder: NSCoder) {
-        items = [CheckListItem]()
-        
-        let row0item = CheckListItem()
-        row0item.text = "Walk the dog"
-        row0item.checked = false
-        items.append(row0item)
-        
-        let row1item = CheckListItem()
-        row1item.text = "Learn iOS development"
-        row1item.checked = true
-        items.append(row1item)
-        
-        let row2item = CheckListItem()
-        row2item.text = "Brush teeth"
-        row2item.checked = true
-        items.append(row2item)
-        
-        let row3item = CheckListItem()
-        row3item.text = "Soccer practice"
-        row3item.checked = false
-        items.append(row3item)
-        
-        let row4item = CheckListItem()
-        row4item.text = "Eat ice cream"
-        row4item.checked = true
-        items.append(row4item)
-        
-        super.init(coder: aDecoder)
-    }
+    var items = [CheckListItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadChecklistsItems()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistsItems() {
+        print("save checklists")
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+            
+        } catch {
+            print("Error encoding items array!")
+        }
+    }
+    
+    func loadChecklistsItems() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                items = try decoder.decode([CheckListItem].self, from: data)
+            } catch {
+                print("Error decoding items array!")
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,6 +81,8 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
             configureCheckamrk(for: cell, with: item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        saveChecklistsItems()
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -83,6 +90,8 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        saveChecklistsItems()
     }
     
     func configureCheckamrk(for cell: UITableViewCell, with item: CheckListItem) {
@@ -110,6 +119,7 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+        saveChecklistsItems()
         navigationController?.popViewController(animated: true)
     }
     
@@ -119,6 +129,7 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
             }
+            saveChecklistsItems()
         }
         navigationController?.popViewController(animated: true)
     }
