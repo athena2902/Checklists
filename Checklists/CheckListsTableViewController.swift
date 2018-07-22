@@ -16,7 +16,7 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
         super.viewDidLoad()
 
         loadChecklistsItems()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func didReceiveMemoryWarning() {
