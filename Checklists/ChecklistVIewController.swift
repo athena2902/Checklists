@@ -8,8 +8,9 @@
 
 import UIKit
 
-class CheckListsTableViewController: UITableViewController, ItemDetailViewControllerDelegate {
+class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
+    var checklist: Checklist!
     var items = [CheckListItem]()
     
     override func viewDidLoad() {
@@ -17,6 +18,8 @@ class CheckListsTableViewController: UITableViewController, ItemDetailViewContro
 
         loadChecklistsItems()
         navigationItem.largeTitleDisplayMode = .never
+        
+        title = checklist.name
     }
 
     override func didReceiveMemoryWarning() {
