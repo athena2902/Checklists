@@ -27,6 +27,12 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         list = Checklist(name: "To do")
         lists.append(list)
+        
+        for list in lists {
+            let item = CheckListItem()
+            item.text = "Item for \(list.name)"
+            list.items.append(item)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
