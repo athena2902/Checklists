@@ -15,23 +15,42 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+ 
+        loadChecklists()
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklists() {
+        print("save checklists")
+        let encoder = PropertyListEncoder()
         
-        var list = Checklist(name: "Birthdays")
-        lists.append(list)
+        do {
+            let data = try encoder.encode(lists)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+            
+        } catch {
+            print("Error encoding items array!")
+        }
+    }
+    
+    func loadChecklists() {
+        let path = dataFilePath()
         
-        list = Checklist(name: "Sports")
-        lists.append(list)
-        
-        list = Checklist(name: "Cool apps")
-        lists.append(list)
-        
-        list = Checklist(name: "To do")
-        lists.append(list)
-        
-        for list in lists {
-            let item = CheckListItem()
-            item.text = "Item for \(list.name)"
-            list.items.append(item)
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                lists = try decoder.decode([Checklist].self, from: data)
+            } catch {
+                print("Error decoding items array!")
+            }
         }
     }
     
