@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE1A60E92104B05A00703212 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1A60E82104B05A00703212 /* AllListsViewController.swift */; };
 		EE1A60EB2104D20200703212 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1A60EA2104D20200703212 /* Checklist.swift */; };
+		EE4A0912210DABC3004372FB /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4A0911210DABC3004372FB /* DataModel.swift */; };
 		EE55921B20C58E460001D046 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55921A20C58E460001D046 /* AppDelegate.swift */; };
 		EE55922020C58E460001D046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55921E20C58E460001D046 /* Main.storyboard */; };
 		EE55922220C58E4A0001D046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE55922120C58E4A0001D046 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		EE1A60E82104B05A00703212 /* AllListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		EE1A60EA2104D20200703212 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		EE4A0911210DABC3004372FB /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EE55921720C58E450001D046 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE55921A20C58E460001D046 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE55921F20C58E460001D046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				EE55921A20C58E460001D046 /* AppDelegate.swift */,
+				EE4A0911210DABC3004372FB /* DataModel.swift */,
 				EE1A60E82104B05A00703212 /* AllListsViewController.swift */,
 				EEA2C6992108C16B005E7E67 /* ListDetailViewController.swift */,
 				EEE8479120C6DE9C0005C4E1 /* ChecklistVIewController.swift */,
@@ -155,6 +158,7 @@
 				EE60CCBC20F24B87009C501E /* ItemDetailViewController.swift in Sources */,
 				EE1A60EB2104D20200703212 /* Checklist.swift in Sources */,
 				EEE8479220C6DE9C0005C4E1 /* ChecklistVIewController.swift in Sources */,
+				EE4A0912210DABC3004372FB /* DataModel.swift in Sources */,
 				EE1A60E92104B05A00703212 /* AllListsViewController.swift in Sources */,
 				EE55921B20C58E460001D046 /* AppDelegate.swift in Sources */,
 			);
