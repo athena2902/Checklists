@@ -19,14 +19,12 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("DEBUG: viewDidAppear")
         
         navigationController?.delegate = self
         
         let index = UserDefaults.standard.integer(
             forKey: "ChecklistIndex")
         
-        // TODO: case didn't add any checklist yet
         if index != -1 {
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowChecklist",
@@ -126,7 +124,6 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     func navigationController(_ navigationController: UINavigationController,willShow viewController: UIViewController,
         animated: Bool) {
         
-        print("DEBUG: navigationController willShow")
         if viewController === self {
             UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
         }
