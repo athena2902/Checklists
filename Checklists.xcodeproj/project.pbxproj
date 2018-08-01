@@ -66,20 +66,28 @@
 		EE55921920C58E450001D046 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
+				EE69683D2112017E00BD3C3D /* View Controllers */,
 				EE55921A20C58E460001D046 /* AppDelegate.swift */,
+				EE55922120C58E4A0001D046 /* Assets.xcassets */,
+				EE1A60EA2104D20200703212 /* Checklist.swift */,
+				EE6F56E920CC2B6500C86461 /* CheckListItem.swift */,
 				EE4A0911210DABC3004372FB /* DataModel.swift */,
+				EE55922620C58E4A0001D046 /* Info.plist */,
+				EE55922320C58E4A0001D046 /* LaunchScreen.storyboard */,
+				EE55921E20C58E460001D046 /* Main.storyboard */,
+			);
+			path = Checklists;
+			sourceTree = "<group>";
+		};
+		EE69683D2112017E00BD3C3D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				EE1A60E82104B05A00703212 /* AllListsViewController.swift */,
 				EEA2C6992108C16B005E7E67 /* ListDetailViewController.swift */,
 				EEE8479120C6DE9C0005C4E1 /* ChecklistVIewController.swift */,
 				EE60CCBB20F24B87009C501E /* ItemDetailViewController.swift */,
-				EE55921E20C58E460001D046 /* Main.storyboard */,
-				EE55922120C58E4A0001D046 /* Assets.xcassets */,
-				EE55922320C58E4A0001D046 /* LaunchScreen.storyboard */,
-				EE55922620C58E4A0001D046 /* Info.plist */,
-				EE6F56E920CC2B6500C86461 /* CheckListItem.swift */,
-				EE1A60EA2104D20200703212 /* Checklist.swift */,
 			);
-			path = Checklists;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
