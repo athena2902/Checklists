@@ -16,6 +16,16 @@ class DataModel {
         registerDefaults()
     }
     
+    var indexOfSelectedChecklist: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "ChecklistIndex")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     func documentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -26,7 +36,6 @@ class DataModel {
     }
     
     func saveChecklists() {
-        print("save checklists")
         let encoder = PropertyListEncoder()
         
         do {
