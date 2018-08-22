@@ -47,7 +47,9 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
         let count = checklist.countUncheckedItems()
-        if count == 0 {
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "No items"
+        } else if count == 0 {
             cell.detailTextLabel!.text = "All done!"
         } else {
             cell.detailTextLabel!.text = "\(count) Remaining"
