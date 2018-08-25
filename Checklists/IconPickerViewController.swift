@@ -13,7 +13,7 @@ protocol IconPickerViewControllerDelegate: class {
 }
 
 class IconPickerViewController: UITableViewController {
-    weak var delagate: IconPickerViewControllerDelegate?
+    weak var delegate: IconPickerViewControllerDelegate?
     
     let icons = [ "No Icon", "Appointments", "Birthdays", "Chores",
     "Drinks", "Folder", "Groceries", "Inbox", "Photos", "Trips" ]
@@ -30,5 +30,15 @@ class IconPickerViewController: UITableViewController {
         cell.imageView!.image = UIImage(named: iconName)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelect")
+        if let delegate = delegate {
+            let iconName = icons[indexPath.row]
+            delegate.iconPicker(self, didPick: iconName)
+        } else {
+            print("error")
+        }
     }
 }

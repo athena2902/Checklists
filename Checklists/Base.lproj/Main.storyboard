@@ -95,7 +95,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="i0h-LQ-Aag" kind="show" identifier="PickerIcon" id="FlV-ps-AmO"/>
+                                            <segue destination="i0h-LQ-Aag" kind="show" identifier="PickIcon" id="FlV-ps-AmO"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="1960.8" y="-630.13493253373315"/>
         </scene>
-        <!--Title-->
+        <!--PickIcon-->
         <scene sceneID="Ngv-bX-zuC">
             <objects>
                 <tableViewController id="i0h-LQ-Aag" customClass="IconPickerViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,7 +160,7 @@
                             <outlet property="delegate" destination="i0h-LQ-Aag" id="3s3-Mp-epN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="jZR-Kc-3O6"/>
+                    <navigationItem key="navigationItem" title="PickIcon" id="jZR-Kc-3O6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkP-zP-IDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
