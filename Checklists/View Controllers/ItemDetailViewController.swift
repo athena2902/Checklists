@@ -19,19 +19,26 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    @IBOutlet weak var dueDateLabel: UILabel!
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: CheckListItem?
+    var dueDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .never
-        if let itemToEdit = itemToEdit {
+        if let item = itemToEdit {
             title = "Edit Item"
-            textField.text = itemToEdit.text
+            textField.text = item.text
             doneBarButton.isEnabled = true
+            
+            shouldRemindSwitch.isOn = item.shoudRemind
+            dueDate = item.dueDate
         }
+        updateDueDateLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,13 +52,20 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        if let itemToEdit = itemToEdit {
-            itemToEdit.text = textField.text!
-            delegate?.itemDetailViewController(self, didFinishingEditing: itemToEdit)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            
+            item.shoudRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate
+            
+            delegate?.itemDetailViewController(self, didFinishingEditing: item)
         } else {
             let item = CheckListItem()
             item.text = textField.text!
             item.checked = false
+            
+            item.shoudRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate
             
             delegate?.itemDetailViewController(self, didFinishingAdding: item)
         }
@@ -68,5 +82,12 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         
         doneBarButton.isEnabled = !newText.isEmpty
         return true
+    }
+    
+    func updateDueDateLabel() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        dueDateLabel.text = formatter.string(from: dueDate)
     }
 }
